@@ -12,7 +12,7 @@ DATABASES = {
         'NAME': dev_db.get("name"),
         'USER': dev_db.get("user"),
         'PASSWORD': dev_db.get("pass"),
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': dev_db.get("host"),
+        'PORT': dev_db.get("port"),
     }
 }

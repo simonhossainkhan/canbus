@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': prod_db.get("name"),
         'USER': prod_db.get("user"),
         'PASSWORD': prod_db.get("pass"),
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': prod_db.get("host"),
+        'PORT': prod_db.get("port"),
     }
 }
