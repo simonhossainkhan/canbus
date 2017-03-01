@@ -29,7 +29,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
     ],
-    'PAGE_SIZE': 10
+    # 'PAGE_SIZE': 10
 }
 
 # Application definition
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'canbus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['canbus/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

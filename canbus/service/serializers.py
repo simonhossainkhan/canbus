@@ -9,14 +9,10 @@ class TripsSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'start_point',
-            'end_point',
             'start_time',
             'end_time',
-            'start_miles',
-            'end_miles',
-            'start_gas_level',
-            'end_gas_level',
+            'start_fuel',
+            'end_fuel',
         )
 
 
@@ -25,8 +21,11 @@ class TripsInformationSerializer(serializers.ModelSerializer):
         model = TripInformation
         fields = (
             'id',
-            'location',
+            'trip',
             'time',
             'rpm',
-            'trip',
+            'mph',
+            'throttle',
+            'load',
+            'fuel_status',
         )
