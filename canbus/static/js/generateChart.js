@@ -41,7 +41,14 @@ $( document ).ready(function() {
 
     }
 
-    get_trip_info(1)
+    $('.trip-panel').click(function(event) {
+        var status = $(this).attr('id');
+        $(".active").removeClass("active");
+        $(this).addClass("active");
+
+        get_trip_info(status)
+    });
+
 
 });
 
