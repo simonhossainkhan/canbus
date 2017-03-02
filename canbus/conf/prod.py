@@ -1,7 +1,7 @@
 from base import *
 from ..secrets import prod_db
 
-HOST_NAME = "http://desibazaar.pythonanywhere.com/"
+HOST_NAME = "http://iotcanbus.pythonanywhere.com/"
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
