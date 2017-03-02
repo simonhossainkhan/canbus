@@ -18,3 +18,8 @@ DATABASES = {
 }
 
 STATIC_ROOT = "/home/skhan/School Projects/canbus_service/static"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    BASE_DIR + '/static/',
+]

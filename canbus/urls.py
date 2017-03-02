@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from service.views import TripsInformationList, TripsList, SaveLogFile
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -29,3 +32,5 @@ urlpatterns = [
     url(r'^api/save-pi-data/$', SaveLogFile.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
