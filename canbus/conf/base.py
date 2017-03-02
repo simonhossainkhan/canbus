@@ -61,7 +61,7 @@ ROOT_URLCONF = 'canbus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['canbus/templates/'],
+        'DIRS': ['canbus/templates/', 'canbus/canbus/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
