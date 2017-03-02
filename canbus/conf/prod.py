@@ -15,3 +15,5 @@ DATABASES = {
         'PORT': prod_db.get("port"),
     }
 }
+
+STATIC_ROOT = "/home/iotcanbus/canbus/static"

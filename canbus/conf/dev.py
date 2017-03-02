@@ -16,3 +16,5 @@ DATABASES = {
         'PORT': dev_db.get("port"),
     }
 }
+
+STATIC_ROOT = "/home/skhan/School Projects/canbus_service/static"
