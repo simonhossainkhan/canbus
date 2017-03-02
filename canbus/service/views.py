@@ -2,6 +2,7 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
+from django.views.generic import TemplateView
 
 from models import TripInformation, Trips
 from serializers import TripsSerializer, TripsInformationSerializer
@@ -13,6 +14,21 @@ import string
 import random
 import pytz
 
+
+class HomeView(TemplateView):
+    template_name="index.html"
+
+    def get(self, request, *args, **kwargs):
+
+        trips = Trips.objects.all()
+        serializer = TripsSerializer(trips, many=True)
+
+        context = self.get_context_data(**kwargs)
+        context.update({"trips": serializer.data})
+
+        print context
+
+        return self.render_to_response(context)
 
 class TripsList(generics.ListCreateAPIView):
     queryset = Trips.objects.all()

@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic import TemplateView
 
-from service.views import TripsInformationList, TripsList, SaveLogFile
+from service.views import TripsInformationList, TripsList, SaveLogFile, HomeView
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -25,7 +24,7 @@ from django.conf import settings
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^$', HomeView.as_view()),
     url(r'^admin/', admin.site.urls),
     url(r'^api/trips/$', TripsList.as_view()),
     url(r'^api/trip-information/$', TripsInformationList.as_view()),
