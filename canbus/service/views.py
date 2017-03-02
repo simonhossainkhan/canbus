@@ -2,7 +2,9 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 from django.views.generic import TemplateView
+from django.conf import settings
 
 from models import TripInformation, Trips
 from serializers import TripsSerializer, TripsInformationSerializer
@@ -25,10 +27,10 @@ class HomeView(TemplateView):
 
         context = self.get_context_data(**kwargs)
         context.update({"trips": serializer.data})
-
-        print context
+        context.update({"host": settings.HOST_NAME})
 
         return self.render_to_response(context)
+
 
 class TripsList(generics.ListCreateAPIView):
     queryset = Trips.objects.all()
@@ -40,6 +42,29 @@ class TripsInformationList(generics.ListCreateAPIView):
     queryset = TripInformation.objects.all()
     serializer_class = TripsInformationSerializer
     permission_classes = (AllowAny,)
+
+    def get_data_list(self, key, dat_set):
+        data_list = list()
+        for item in dat_set:
+            if item.get(key) is not None:
+                data_list.append(item[key])
+        return data_list
+
+    def get(self, request, *args, **kwargs):
+        if request.GET.get("tripID") is not None:
+            trip_id = int(request.GET.get("tripID"))
+            specific_trip_info = TripInformation.objects.all().filter(trip_id=trip_id)
+            serializer = TripsInformationSerializer(specific_trip_info, many=True)
+            data_list = {
+                "mph": self.get_data_list("mph", serializer.data),
+                "rpm": self.get_data_list("rpm", serializer.data),
+                "throttle": self.get_data_list("throttle", serializer.data),
+                "time": self.get_data_list("time", serializer.data),
+                "load": self.get_data_list("load", serializer.data),
+                "fuel_status": self.get_data_list("fuel_status", serializer.data),
+            }
+            return Response({"serializer":serializer.data, "list": data_list})
+        return self.list(request, *args, **kwargs)
 
 
 class SaveLogFile(generics.CreateAPIView):
