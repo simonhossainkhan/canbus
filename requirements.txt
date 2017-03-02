@@ -1,0 +1,11 @@
+Django==1.10.5
+django-extensions==1.7.6
+djangorestframework==3.5.4
+mysql==0.0.1
+MySQL-python==1.2.5
+numpy==1.11.2
+pkg-resources==0.0.0
+pyenchant==1.6.8
+pytz==2016.10
+requests==2.13.0
+six==1.10.0
