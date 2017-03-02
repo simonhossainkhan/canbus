@@ -7,11 +7,11 @@ $( document ).ready(function() {
           type: "GET",
           url: hostName + trip_info_endpoint + "?tripID=" + tripID,
           success: function(apiData){
-            generateTimeChart("mph", "Time vs MPH", apiData["list"]["time"], apiData["list"]["mph"], "MPH", "Time")
-            generateTimeChart("rpm", "Time vs RPM", apiData["list"]["time"], apiData["list"]["rpm"], "RPM", "Time")
-            generateTimeChart("throttle", "Time vs Throttle", apiData["list"]["time"], apiData["list"]["throttle"], "Throttle", "Time")
-            generateTimeChart("load", "Time vs % Load", apiData["list"]["time"], apiData["list"]["load"], "Load", "Load")
-            generateTimeChart("fuel_status", "Time vs Fuel Status", apiData["list"]["time"], apiData["list"]["fuel_status"], "Fuel Status", "Time")
+            generateTimeChart("mph", "Time vs MPH", apiData["list"]["time"], apiData["list"]["mph"], "Time", "MPH")
+            generateTimeChart("rpm", "Time vs RPM", apiData["list"]["time"], apiData["list"]["rpm"], "Time", "RPM")
+            generateTimeChart("throttle", "Time vs Throttle", apiData["list"]["time"], apiData["list"]["throttle"], "Time", "% Throttle")
+            generateTimeChart("load", "Time vs % Load", apiData["list"]["time"], apiData["list"]["load"], "Time", "Load")
+            generateTimeChart("fuel_status", "Time vs Fuel Status", apiData["list"]["time"], apiData["list"]["fuel_status"], "Time", "Fuel Status")
           },
           error: function(){
           }
