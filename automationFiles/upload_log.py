@@ -9,7 +9,7 @@ def car_data_save_request(file_location):
         r = requests.post("http://iotcanbus.pythonanywhere.com/api/save-pi-data/", data=data)
     return r.status_code
 
-
+print "-----Starting Python-----"
 file_name=sys.argv[1]
 print file_name
 file_path = "/home/pi/pyobd-pi/log/" + file_name
@@ -20,3 +20,4 @@ if(status_code == 200):
 else:
     print "Upload failed"
     print status_code
+print "-----End Python-----"
